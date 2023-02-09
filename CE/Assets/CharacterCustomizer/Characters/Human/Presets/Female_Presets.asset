@@ -337,12 +337,12 @@ MonoBehaviour:
       materialIndex: 0
       meshTag: 
     HairNames:
-    - Bob_01
+    - Wavey_01
     - Eyebrows_01
     ApparelNames:
-    - Crop_Top_02_Black
-    - Jeans_Skinny_Blue
-    - Sneaker_02_White
+    - TShirt_White
+    - Jeans_Baggy_Blue
+    - Sneaker_01
     - None
     HairColor:
     - propertyName: _Hair_Color

@@ -42,7 +42,7 @@ MonoBehaviour:
       FootRotation: 0
       BallRotation: 0
     AffectFootOffset: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
   - Mesh: {fileID: 63538004460725733, guid: 0acd78d2e91f6de468ea0b361ea7c4aa, type: 3}
     Name: Aviator_Glasses
     AddCopyPoseScript: 0

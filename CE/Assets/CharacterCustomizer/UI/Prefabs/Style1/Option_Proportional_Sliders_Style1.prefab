@@ -129,7 +129,6 @@ MonoBehaviour:
   - shp_face_09
   MeshTag: 
   MaterialIndex: -1
-  Slot: 0
   SliderHeight: 40
   TextPrefix: 
   RemoveText: 1

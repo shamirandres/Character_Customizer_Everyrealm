@@ -18,11 +18,6 @@ MonoBehaviour:
     ShadowMap: {fileID: 2800000, guid: 1270350247c551c459dd9a3499de08a6, type: 3}
     AddCopyPoseScript: 0
     Icon: {fileID: 0}
-  - Mesh: {fileID: 7919841890323184811, guid: 98b3a586a2bb88645b11b560c46a5a76, type: 3}
-    Name: Side_Part_01
-    ShadowMap: {fileID: 2800000, guid: a9633756f88c5f64e920baf4d0b86115, type: 3}
-    AddCopyPoseScript: 0
-    Icon: {fileID: 0}
   - Mesh: {fileID: 9187400157847743859, guid: 222a36a2d3dcdc44e9f63ee40deca2b6, type: 3}
     Name: Side_Part_02
     ShadowMap: {fileID: 2800000, guid: 9d3046a032c57be4f9a425cde705275e, type: 3}

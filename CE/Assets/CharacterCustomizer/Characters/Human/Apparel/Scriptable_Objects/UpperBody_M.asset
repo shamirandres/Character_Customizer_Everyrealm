@@ -163,34 +163,4 @@ MonoBehaviour:
       BallRotation: 0
     AffectFootOffset: 0
     Icon: {fileID: 0}
-  - Mesh: {fileID: 651135364317582127, guid: b75254887cbed1d4db6a79c34bedcf93, type: 3}
-    Name: Suit_Jacket_Navy
-    AddCopyPoseScript: 0
-    Mask: {fileID: 2800000, guid: 5467706a8cef85940a2ac8eb405c8feb, type: 3}
-    FootOffset:
-      HeightOffset: 0
-      FootRotation: 0
-      BallRotation: 0
-    AffectFootOffset: 0
-    Icon: {fileID: 0}
-  - Mesh: {fileID: 7840274594062331690, guid: 0f630cf97fe884c40902c87cd4971ddf, type: 3}
-    Name: Suit_Jacket_Black
-    AddCopyPoseScript: 0
-    Mask: {fileID: 2800000, guid: 5467706a8cef85940a2ac8eb405c8feb, type: 3}
-    FootOffset:
-      HeightOffset: 0
-      FootRotation: 0
-      BallRotation: 0
-    AffectFootOffset: 0
-    Icon: {fileID: 0}
-  - Mesh: {fileID: 7840274594062331690, guid: 50ff83a413292df41b15e31da7c69fa8, type: 3}
-    Name: Suit_Jacket_Gray
-    AddCopyPoseScript: 0
-    Mask: {fileID: 2800000, guid: 5467706a8cef85940a2ac8eb405c8feb, type: 3}
-    FootOffset:
-      HeightOffset: 0
-      FootRotation: 0
-      BallRotation: 0
-    AffectFootOffset: 0
-    Icon: {fileID: 0}
   MaskProperty: _UpperBodyMask

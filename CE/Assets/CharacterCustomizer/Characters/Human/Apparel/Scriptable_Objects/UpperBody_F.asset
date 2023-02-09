@@ -63,16 +63,6 @@ MonoBehaviour:
       BallRotation: 0
     AffectFootOffset: 0
     Icon: {fileID: 0}
-  - Mesh: {fileID: 1962199952113954784, guid: e9ee97ad11cf6dc4cb8d98938fe8302d, type: 3}
-    Name: Crop_Top_02_Black
-    AddCopyPoseScript: 0
-    Mask: {fileID: 2800000, guid: 0fed12f2f010c5b458a2fb5fe95ff07e, type: 3}
-    FootOffset:
-      HeightOffset: 0
-      FootRotation: 0
-      BallRotation: 0
-    AffectFootOffset: 0
-    Icon: {fileID: 0}
   - Mesh: {fileID: 3115285335694175612, guid: fa3b76a6b204da04682d4f2b884ea908, type: 3}
     Name: Crop_Top_01_White
     AddCopyPoseScript: 0

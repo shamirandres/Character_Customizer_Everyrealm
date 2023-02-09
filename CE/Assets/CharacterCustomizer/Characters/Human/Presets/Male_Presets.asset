@@ -337,7 +337,7 @@ MonoBehaviour:
       materialIndex: 0
       meshTag: 
     HairNames:
-    - Side_Part_01
+    - Short_Middle_Part_01
     - Eyebrows_01
     - None
     ApparelNames:
