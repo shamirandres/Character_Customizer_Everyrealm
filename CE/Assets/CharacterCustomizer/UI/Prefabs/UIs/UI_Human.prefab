@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 6150123418110516941}
   - component: {fileID: 1402758130461674547}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Hotkeys_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +423,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 750, y: 61}
+  m_SizeDelta: {x: 555, y: 61}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5618622075122473803
 CanvasRenderer:
@@ -3487,6 +3487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647324504212983463, guid: 79d8ba689cd9c7e46880db2f401a1ecb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4647324505288641459, guid: 79d8ba689cd9c7e46880db2f401a1ecb,
         type: 3}
