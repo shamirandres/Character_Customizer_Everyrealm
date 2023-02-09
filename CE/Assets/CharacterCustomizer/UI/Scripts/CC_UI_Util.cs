@@ -17,6 +17,7 @@ namespace CC
             foreach (ICustomizerUI element in interfaces)
             {
                 element.InitializeUIElement(customizerScript, this);
+                Debug.Log("Customizer referenced");
             }
         }
 

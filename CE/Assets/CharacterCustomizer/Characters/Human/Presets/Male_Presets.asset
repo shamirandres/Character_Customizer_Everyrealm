@@ -228,7 +228,7 @@ MonoBehaviour:
       meshTag: 
     - propertyName: mod_nose_tip
       stringValue: 
-      floatValue: 0
+      floatValue: 1
       materialIndex: 0
       meshTag: 
     - propertyName: mod_nose_tip_angle
