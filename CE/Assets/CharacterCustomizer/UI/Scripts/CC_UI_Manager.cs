@@ -54,9 +54,12 @@ namespace CC
 
             if (i == 0)
             {
-                HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
+                //HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
             }
-            else HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
+            else {
+                HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
+            }
+                
         }
 
         public void characterNext()
