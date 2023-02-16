@@ -5,16 +5,19 @@ namespace CC
 {
     public class CameraController : MonoBehaviour
     {
+        // Singleton Pattern
         public static CameraController instance;
 
         private void Awake()
         {
+            // If instance is not set, this is the first CameraController object created
             if (instance == null)
             {
                 instance = this;
             }
             else
             {
+                // If instance is set; Destroy object
                 Destroy(gameObject);
             }
         }
@@ -27,27 +30,34 @@ namespace CC
         private Vector3 mouseOldPos;
         private Vector3 mouseDelta;
 
+        // Camera Rotation Variables
         private Vector3 cameraRotationTarget = new Vector3(10, -5, 0);
         private Vector3 cameraRotationDefault;
         private float rotateSpeed = 5;
         private bool dragging = false;
 
+        // Camera Panning Variables
         private Vector3 cameraOffset;
         private Vector3 cameraOffsetDefault;
         private float panSpeed = 3;
         private bool panning = false;
 
+        // Cursor Variables
         public Texture2D cursorTexture;
         private Vector2 hotSpot;
 
         private void Start()
+
         {
+            // Get camera references and the parent transforms
             _camera = Camera.main;
             cameraRoot = gameObject.transform;
 
+            // Set cursor texture and hotSpot
             hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
             setDefaultCursor();
 
+            // Set default camera offset and rotation
             cameraOffsetDefault = _camera.transform.localPosition;
             cameraOffset = cameraOffsetDefault;
 
@@ -55,11 +65,13 @@ namespace CC
             cameraRotationTarget = cameraRotationDefault;
         }
 
+        // Change cursor to specified texture
         public void setCursor(Texture2D texture)
         {
             Cursor.SetCursor(texture, hotSpot, CursorMode.Auto);
         }
 
+        // Set mouse cursor to the default  texture
         public void setDefaultCursor()
         {
             Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.Auto);
@@ -67,27 +79,32 @@ namespace CC
 
         private void Update()
         {
+            // Ignore input if the cursor is hovering over an UI Element
             if (!EventSystem.current.IsPointerOverGameObject())
             {
+                // Zoom based on mouse wheel scroll
                 zoomTarget = Mathf.Clamp((zoomTarget - Input.mouseScrollDelta.y / 10), 0, 1);
-
+                // Start cammera rotation if the right mouse button is pressed
                 if (Input.GetMouseButtonDown(1))
                 {
                     mouseOldPos = Input.mousePosition;
                     dragging = true;
                 }
 
+                // Start camera panning if middle mouse button is pressed
                 if (Input.GetMouseButtonDown(2))
                 {
                     mouseOldPos = Input.mousePosition;
                     panning = true;
                 }
             }
-
+            
+            // Stop camera rotation when the right mouse button is pressed
             if (Input.GetMouseButtonUp(1))
 
                 dragging = false;
 
+            // Rotate camera based on mouse movement when the right mouse button is pressed
             if (Input.GetMouseButton(1) && dragging)
             {
                 mouseDelta = mouseOldPos - Input.mousePosition;
@@ -98,9 +115,11 @@ namespace CC
                 mouseOldPos = Input.mousePosition;
             }
 
+            // Stop camera panning when the middle button is released
             if (Input.GetMouseButtonUp(2))
 
                 panning = false;
+            // Pan camera based on mouse movement when middle mouse button is pressed
 
             if (Input.GetMouseButton(2) && panning)
             {

@@ -8,6 +8,13 @@ namespace CC
     {
         public static CC_UI_Manager instance;
 
+        [Tooltip("The parent object of your customizable characters")]
+        public GameObject CharacterParent;
+
+        public List<AudioClip> UISounds = new List<AudioClip>();
+
+        private int characterIndex = 0;
+
         private void Awake()
         {
             if (instance == null)
@@ -20,53 +27,43 @@ namespace CC
             }
         }
 
-        [Tooltip("The parent object of your customizable characters")]
-        public GameObject CharacterParent;
-
-        public List<AudioClip> UISounds = new List<AudioClip>();
-
-        private int characterIndex = 0;
-
-        public void Start()
+        private void Start()
         {
             SetActiveCharacter(0);
         }
 
-        public void playUIAudio(int Index)
+        public void playUIAudio(int index)
         {
-            var audioSource = gameObject.GetComponent<AudioSource>();
-            if (audioSource && UISounds.Count > Index) audioSource.clip = UISounds[Index]; audioSource.Play();
+            if (UISounds.Count > index)
+            {
+                var audioSource = gameObject.GetComponent<AudioSource>();
+                audioSource.clip = UISounds[index];
+                audioSource.Play();
+            }
         }
 
-        public void SetActiveCharacter(int i)
+        public void SetActiveCharacter(int index)
         {
-            characterIndex = i;
+            characterIndex = index;
 
-            for (int j = 0; j < CharacterParent.transform.childCount; j++)
+            for (int i = 0; i < CharacterParent.transform.childCount; i++)
             {
-                //Set character active state
-                CharacterParent.transform.GetChild(j).gameObject.SetActive(i == j);
-                //Fetch menu from the character's component and set active state
-                CharacterParent.transform.GetChild(j).GetComponent<CharacterCustomization>().UI.SetActive(i == j);
+                var character = CharacterParent.transform.GetChild(i).gameObject;
+                // Set character active state
+                character.SetActive(i == index);
+                // Fetch menu from the character's component and set active state
+                character.GetComponent<CharacterCustomization>().UI.SetActive(i == index);
             }
-
-            var HDCData = Camera.main.GetComponent<HDAdditionalCameraData>();
-
-            if (i == 0)
-            {
-                HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
-            }
-            else HDCData.antialiasing = HDAdditionalCameraData.AntialiasingMode.TemporalAntialiasing;
         }
 
         public void characterNext()
         {
-            SetActiveCharacter(characterIndex == CharacterParent.transform.childCount - 1 ? 0 : characterIndex + 1);
+            SetActiveCharacter((characterIndex + 1) % CharacterParent.transform.childCount);
         }
 
         public void characterPrev()
         {
-            SetActiveCharacter(characterIndex == 0 ? CharacterParent.transform.childCount - 1 : characterIndex - 1);
+            SetActiveCharacter((characterIndex - 1 + CharacterParent.transform.childCount) % CharacterParent.transform.childCount);
         }
     }
 }
