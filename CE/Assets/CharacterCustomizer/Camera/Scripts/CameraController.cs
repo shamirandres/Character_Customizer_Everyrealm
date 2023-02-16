@@ -24,7 +24,6 @@ namespace CC
 
         private Camera _camera;
         private Transform cameraRoot;
-        public GameObject character;
 
         private float zoomTarget = 1;
 
@@ -101,9 +100,9 @@ namespace CC
             }
             
             // Stop camera rotation when the right mouse button is pressed
-            if (Input.GetMouseButtonUp(1)) { dragging = false; }
+            if (Input.GetMouseButtonUp(1))
 
-                
+                dragging = false;
 
             // Rotate camera based on mouse movement when the right mouse button is pressed
             if (Input.GetMouseButton(1) && dragging)
@@ -111,8 +110,7 @@ namespace CC
                 mouseDelta = mouseOldPos - Input.mousePosition;
 
                 cameraRotationTarget.x += mouseDelta.y / 5;
-                //cameraRotationTarget.y -= mouseDelta.x / 5;
-                character.transform.Rotate(new Vector3(0, mouseDelta.x / 5, 0));
+                cameraRotationTarget.y -= mouseDelta.x / 5;
 
                 mouseOldPos = Input.mousePosition;
             }
