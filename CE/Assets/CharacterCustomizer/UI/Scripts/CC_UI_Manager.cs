@@ -30,6 +30,7 @@ namespace CC
         private void Start()
         {
             SetActiveCharacter(0); // set the first character as active on start
+            Invoke("characterNext", 0.1f);
         }
 
         public void playUIAudio(int index)
@@ -50,20 +51,35 @@ namespace CC
             {
                 var character = child.gameObject; // get the child object as a game object
                 // Set character active state
-                character.SetActive(child.GetSiblingIndex() == index); // set the active state of the character object based on whether its index is equal to the current index
+                character.SetActive(child.GetSiblingIndex() == index && index != 0); // set the active state of the character object based on whether its index is equal to the current index
                 // Fetch menu from the character's component and set active state
-                character.GetComponent<CharacterCustomization>().UI.SetActive(child.GetSiblingIndex() == index); // set the active state of the UI object associated with the character based on whether its index is equal to the current index
+                character.GetComponent<CharacterCustomization>().UI.SetActive(child.GetSiblingIndex() == index && index != 0); // set the active state of the UI object associated with the character based on whether its index is equal to the current index
             }
+
         }
 
         public void characterNext()
         {
-            SetActiveCharacter((characterIndex + 1) % CharacterParent.transform.childCount); // set the active character to the next character by incrementing the index (with wraparound)
+            int value = (characterIndex + 1) % CharacterParent.transform.childCount;
+            if (value == 0) {
+                SetActiveCharacter(1);
+            }
+            else {
+                SetActiveCharacter(value); // set the active character to the next character by incrementing the index (with wraparound)
+            }
+            
         }
 
         public void characterPrev()
         {
-            SetActiveCharacter((characterIndex - 1 + CharacterParent.transform.childCount) % CharacterParent.transform.childCount); // set the active character to the previous character by decrementing the index (with wraparound)
+            int value = ((characterIndex - 1) + CharacterParent.transform.childCount) % CharacterParent.transform.childCount;
+            if (value == 0)
+            {
+                SetActiveCharacter(CharacterParent.transform.childCount-1);
+            }
+            else { 
+                SetActiveCharacter(value); // set the active character to the previous character by decrementing the index (with wraparound)
+            }
         }
     }
 }
