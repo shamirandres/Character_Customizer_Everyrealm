@@ -4,89 +4,54 @@ namespace CC
 {
     public class TransformBone : MonoBehaviour
     {
+        // Offset to apply to the transform
         public Vector3 offset = new Vector3(0f, 0f, 0f);
 
-        public enum mode
-        {
-            Height, FootRotation, BallRotation
-        }
+        // Mode of the offset
+        public enum Mode { Height, FootRotation, BallRotation }
+        public Mode mode;
 
-        public enum axis
-        {
-            X, Y, Z
-        }
+        // Axis of the offset
+        public enum Axis { X, Y, Z }
+        public Axis axis;
 
-        public axis Axis;
-        public mode Mode;
-
+        // Set the offset based on the provided foot offset values
         public void SetOffset(FootOffset footOffset)
         {
             float value;
-            switch (Mode)
-            {
-                case mode.Height:
-                    {
-                        value = footOffset.HeightOffset;
 
-                        break;
-                    }
-                case mode.FootRotation:
-                    {
-                        value = footOffset.FootRotation;
-                        break;
-                    }
-                case mode.BallRotation:
-                    {
-                        value = footOffset.BallRotation;
-                        break;
-                    }
+            // Determine the value to use for the offset based on the selected mode
+            switch (mode)
+            {
+                case Mode.Height:
+                    value = footOffset.HeightOffset;
+                    break;
+                case Mode.FootRotation:
+                    value = footOffset.FootRotation;
+                    break;
+                case Mode.BallRotation:
+                    value = footOffset.BallRotation;
+                    break;
                 default:
-                    {
-                        value = 0f;
-                        break;
-                    }
+                    value = 0f;
+                    break;
             }
 
-            switch (Axis)
+            // Determine the vector to use for the offset based on the selected axis
+            offset = axis switch
             {
-                case axis.X:
-                    {
-                        offset = new Vector3(value, 0f, 0f);
-                        break;
-                    }
-                case axis.Y:
-                    {
-                        offset = new Vector3(0f, value, 0f);
-                        break;
-                    }
-                case axis.Z:
-                    {
-                        offset = new Vector3(0f, 0f, value);
-                        break;
-                    }
-            }
+                Axis.X => new Vector3(value, 0f, 0f),
+                Axis.Y => new Vector3(0f, value, 0f),
+                Axis.Z => new Vector3(0f, 0f, value),
+                _ => offset
+            };
         }
 
+        // Apply the offset to the transform
         private void LateUpdate()
         {
-            switch (Mode)
-            {
-                case mode.Height:
-                    {
-                        transform.position = transform.position + offset / 100;
-                        break;
-                    }
-                case mode.FootRotation:
-                    {
-                        transform.eulerAngles = transform.eulerAngles + offset;
-                        break;
-                    }
-                case mode.BallRotation:
-                    {
-                        transform.eulerAngles = transform.eulerAngles + offset;
-                        break;
-                    }
-            }
-        }
+            transform.position = mode == Mode.Height ? transform.position + offset / 100 : transform.position;
+            transform.eulerAngles = mode != Mode.Height ? transform.eulerAngles + offset : transform.eulerAngles;
+         }
     }
 }
