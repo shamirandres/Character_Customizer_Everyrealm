@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SkinDiffusionProfile
   m_EditorClassIdentifier: 
   profile:
-    scatteringDistance: {r: 0.6886792, g: 0.32047924, b: 0.21764861, a: 1}
+    scatteringDistance: {r: 0.7490196, g: 0.34855884, b: 0.23671843, a: 1}
+    scatteringDistanceMultiplier: 0.91944087
     transmissionTint: {r: 0.6037736, g: 0.35220793, b: 0.28195086, a: 1}
     texturingMode: 0
     transmissionMode: 0
@@ -21,4 +22,4 @@ MonoBehaviour:
     worldScale: 1.5
     ior: 1.4
     hash: 1078752096
-  m_Version: 1
+  m_Version: 2
